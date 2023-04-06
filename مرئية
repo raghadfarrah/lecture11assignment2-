@@ -1,0 +1,105 @@
+namespace Lecture_11
+{
+    public partial class frmLogin : Form
+    {
+
+        private User user1;
+        private User user2;
+        private User user3;
+        private User user4;
+        private User user5;
+        private User user6; 
+        private User user7;
+        private User user8;
+        private User user9;
+        private List<User> users;
+
+        public frmLogin()
+        {
+            InitializeComponent();
+        }
+        
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            user1 = new User();
+            user1.UserId = 1;
+            user1.FullName = "Khaled Mohammad";
+            user1.Username = "KM";
+            user1.Password = "1234";
+
+            user2 = new User();
+            user2.UserId = 2;
+            user2.FullName = "Suad Ahmad";
+            user2.Username = "SA";
+            user2.Password = "5678";
+
+            user3 = new User();
+            user3.UserId = 3;
+            user3.FullName = "dana mohamad";
+            user3.Username = "qmA";
+            user3.Password = "4538";
+
+            user4 = new User();
+            user4.UserId = 4;
+            user4.FullName = "rana amjad";
+            user4.Username = "ra";
+            user4.Password = "5346687";
+
+            user5 = new User();
+            user5.UserId = 5;
+            user5.FullName = "rashed rahbi";
+            user5.Username = "rr";
+            user5.Password = "5555";
+
+            user6 = new User();
+            user6.UserId = 6;
+            user6.FullName = "Suad Ahmad";
+            user6.Username = "SA";
+            user6.Password = "5678";
+
+            user7 = new User();
+            user7.UserId = 7;
+            user7.FullName = "mo Ahmad";
+            user7.Username = "ma";
+            user7.Password = "121212";
+
+            user8 = new User();
+            user8.UserId = 8;
+            user8.FullName = "lara bana";
+            user8.Username = "SA";
+            user8.Password = "5678";
+
+            user9 = new User();
+            user9.UserId = 9;
+            user9.FullName = "Suad Ahmad";
+            user9.Username = "SA";
+            user9.Password = "5678";
+
+            users = new List<User>(); // We created the actual object for the list of users
+
+            users.Add(user1);
+            users.Add(user2);
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {  SqlCeDataReader dtr = com.ExecuteReader();
+           while(dtr.read())
+            if (user1.Username != txtUsername.Text)
+            {
+                MessageBox.Show("User does not exist");
+            }
+            else
+            {
+                if (user1.Password == txtPassword.Text)
+                {
+                    MessageBox.Show("Welcome " + user1.FullName);
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password");
+                }
+            }
+        }
+    }
+}
